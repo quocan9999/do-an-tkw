@@ -1,0 +1,22 @@
+name: Deploy to GitHub Pages
+
+on:
+    push:
+        branches:
+            - master # Branch chính của bạn
+
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+        permissions:
+            contents: write
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v3
+
+            - name: Deploy to GitHub Pages
+              uses: JamesIves/github-pages-deploy-action@v4
+              with:
+                  folder: . # Thư mục chứa code để deploy
+                  branch: gh-pages # KHÔNG NÊN THAY ĐỔI, giữ nguyên là gh-pages
+                  clean: true # Xóa các file cũ trước khi deploy
